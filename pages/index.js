@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Card from "../components/Card.js";
-import useSWR from "swr";
 import Link from "next/link.js";
+import styled from "styled-components";
+import useSWR from "swr";
+import Card from "../components/Card.js";
 import { StyledLink } from "../components/StyledLink.js";
 
 const List = styled.ul`
@@ -12,7 +12,6 @@ const List = styled.ul`
   gap: 1rem;
   padding-left: 0;
 `;
-
 const ListItem = styled.li`
   position: relative;
   width: 100%;
@@ -24,18 +23,17 @@ const FixedLink = styled(StyledLink)`
 `;
 export default function Home() {
   const { data } = useSWR("/api/places", { fallbackData: [] });
-
   return (
     <>
       <List role="list">
         {data.map((place) => {
           return (
-            <ListItem key={place.id}>
+            <ListItem key={place._id}>
               <Card
                 name={place.name}
                 image={place.image}
                 location={place.location}
-                id={place.id}
+                id={place._id}
               />
             </ListItem>
           );
