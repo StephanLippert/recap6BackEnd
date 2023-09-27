@@ -31,48 +31,47 @@ export default function DetailsPage() {
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-
   async function deletePlace() {
     await fetch(`/api/places/${id}`, {
       method: "DELETE",
     });
     router.push("/");
 
-  function deletePlace() {
-    console.log("deleted?");
-
-  }
-  return (
-    <>
-      <Link href={"/"} passHref legacyBehavior>
-        <StyledLink $justifySelf="start">back</StyledLink>
-      </Link>
-      <ImageContainer>
-        <StyledImage
-          src={place.image}
-          priority
-          fill
-          sizes="(max-width: 768px) 100vw,
+    function deletePlace() {
+      console.log("deleted?");
+    }
+    return (
+      <>
+        <Link href={"/"} passHref legacyBehavior>
+          <StyledLink $justifySelf="start">back</StyledLink>
+        </Link>
+        <ImageContainer>
+          <StyledImage
+            src={place.image}
+            priority
+            fill
+            sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-          alt=""
-        />
-      </ImageContainer>
-      <h2>
-        {place.name}, {place.location}
-      </h2>
-      <Link href={place.mapURL} passHref legacyBehavior>
-        <StyledLocationLink>Location on Google Maps</StyledLocationLink>
-      </Link>
-      <p>{place.description}</p>
-      <ButtonContainer>
-        <Link href={`/places/${id}/edit`} passHref legacyBehavior>
-          <StyledLink>Edit</StyledLink>
+            alt=""
+          />
+        </ImageContainer>
+        <h2>
+          {place.name}, {place.location}
+        </h2>
+        <Link href={place.mapURL} passHref legacyBehavior>
+          <StyledLocationLink>Location on Google Maps</StyledLocationLink>
         </Link>
-        <StyledButton onClick={deletePlace} type="button" $variant="delete">
-          Delete
-        </StyledButton>
-      </ButtonContainer>
-    </>
-  );
+        <p>{place.description}</p>
+        <ButtonContainer>
+          <Link href={`/places/${id}/edit`} passHref legacyBehavior>
+            <StyledLink>Edit</StyledLink>
+          </Link>
+          <StyledButton onClick={deletePlace} type="button" $variant="delete">
+            Delete
+          </StyledButton>
+        </ButtonContainer>
+      </>
+    );
+  }
 }
