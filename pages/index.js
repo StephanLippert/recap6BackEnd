@@ -12,7 +12,6 @@ const List = styled.ul`
   gap: 1rem;
   padding-left: 0;
 `;
-
 const ListItem = styled.li`
   position: relative;
   width: 100%;
@@ -24,7 +23,6 @@ const FixedLink = styled(StyledLink)`
 `;
 export default function Home() {
   const { data } = useSWR("/api/places", { fallbackData: [] });
-
   return (
     <>
       <List role="list">

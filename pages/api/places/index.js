@@ -9,6 +9,7 @@ export default async function handler(request, response) {
     response.status(200).json(places);
   }
 
+
   try {
     if (request.method === "POST") {
       const places = request.body;
@@ -21,4 +22,6 @@ export default async function handler(request, response) {
       .status(400)
       .json({ status: `Something went wrong: ${error.message}` });
   }
+
+
 }
