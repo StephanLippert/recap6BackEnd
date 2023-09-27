@@ -26,7 +26,7 @@ export default function CreatePlacePage() {
 
   return (
     <>
-      <h2 id="add-place">Add Place</h2>
+      <h2 id="add-place">Add a new Place</h2>
       <Link href="/" passHref legacyBehavior>
         <StyledBackLink>back</StyledBackLink>
       </Link>
