@@ -20,8 +20,8 @@ export default async function handler(request, response) {
     }
 
     if (request.method === "PUT") {
-      const newPlaceData = request.body;
-      await Place.findByIdAndUpdate(id, newPlaceData);
+      const placeData = request.body;
+      await Place.findByIdAndUpdate(id, placeData);
       return response.status(200).json({ status: "Entry updated!" });
     }
 
